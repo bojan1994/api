@@ -2,15 +2,26 @@
 
 namespace Src\Objects;
 
-class Statistics {
-
+class Statistics
+{
+    /**
+     * @var null
+     */
     private $db = null;
 
+    /**
+     * Statistics constructor
+     *
+     * @param $db
+     */
     public function __construct($db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Get all statistics
+     */
     public function get()
     {
         $statement = "SELECT * FROM statistics;";
@@ -24,6 +35,11 @@ class Statistics {
         }
     }
 
+    /**
+     * Get statistics by id
+     *
+     * @param $id
+     */
     public function getById($id)
     {
         $statement = "SELECT * FROM statistics WHERE id = ?;";
@@ -38,6 +54,11 @@ class Statistics {
         }    
     }
 
+    /**
+     * Store new statistics
+     *
+     * @param array $input
+     */
     public function store(Array $input)
     {
         $statement = "INSERT INTO statistics (google_analytics, positive_guys, created_at) VALUES (:google_analytics, :positive_guys, :created_at);";
@@ -55,6 +76,12 @@ class Statistics {
         }    
     }
 
+    /**
+     * Update statistics
+     *
+     * @param $id
+     * @param array $input
+     */
     public function update($id, Array $input)
     {
         $statement = "UPDATE statistics SET google_analytics = :google_analytics, positive_guys = :positive_guys WHERE id = :id;";
@@ -72,6 +99,11 @@ class Statistics {
         }    
     }
 
+    /**
+     * Delete statistics by id
+     *
+     * @param $id
+     */
     public function delete($id)
     {
         $statement = "DELETE FROM statistics WHERE id = :id;";

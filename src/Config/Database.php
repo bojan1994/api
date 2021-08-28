@@ -2,10 +2,16 @@
 
 namespace Src\Config;
 
-class Database {
-
+class Database
+{
+    /**
+     * @var \PDO|null
+     */
     private $dbConnection = null;
 
+    /**
+     * Database constructor
+     */
     public function __construct()
     {
         $host = getenv('DB_HOST');
@@ -25,6 +31,11 @@ class Database {
         }
     }
 
+    /**
+     * Returns connection
+     *
+     * @return \PDO|null
+     */
     public function getConnection()
     {
         return $this->dbConnection;
