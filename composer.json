@@ -1,0 +1,19 @@
+{
+    "name": "bojan/api",
+    "description": "Simple PHP api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "bojan1994",
+            "email": "b.mihajlovic1994@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    }
+}
