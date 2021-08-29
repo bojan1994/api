@@ -24,7 +24,9 @@ class Statistics
      */
     public function get()
     {
-        $statement = "SELECT * FROM statistics;";
+        $currentMonth = date('Y-m');
+
+        $statement = "SELECT google_analytics, positive_guys FROM statistics WHERE created_at LIKE '{$currentMonth}%';";
 
         try {
             $statement = $this->db->query($statement);
@@ -42,11 +44,13 @@ class Statistics
      */
     public function getById($id)
     {
-        $statement = "SELECT * FROM statistics WHERE id = ?;";
+        $currentMonth = date('Y-m');
+
+        $statement = "SELECT google_analytics, positive_guys FROM statistics WHERE id = ? AND created_at LIKE '{$currentMonth}%';";
 
         try {
             $statement = $this->db->prepare($statement);
-            $statement->execute(array($id));
+            $statement->execute([$id]);
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         } catch (\PDOException $e) {

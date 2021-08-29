@@ -71,7 +71,11 @@ class StatisticsController
     {
         $result = $this->statistics->get();
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
-        $response['body'] = json_encode($result);
+        $response['body'] = json_encode([
+            'error' => false,
+            'message' => '',
+            'data' => $result,
+        ]);
         return $response;
     }
 
@@ -88,7 +92,11 @@ class StatisticsController
             return $this->notFoundResponse();
         }
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
-        $response['body'] = json_encode($result);
+        $response['body'] = json_encode([
+            'error' => false,
+            'message' => '',
+            'data' => $result,
+        ]);
         return $response;
     }
 
